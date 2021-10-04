@@ -1,4 +1,5 @@
 import sys
+import os
 
 def validate_numbers(number):
     try:
@@ -14,7 +15,15 @@ input_filename = sys.argv[1:][0]
 output_filename = sys.argv[1:][1]
 changes = sys.argv[1:][2:]
 
-file = open(input_filename, 'r')
+try:
+    file = open(input_filename, 'r')
+except FileNotFoundError:
+    print("Error: no file!")
+    for f in os.listdir('.'):
+        if os.path.isfile(f):
+            print(f)
+    sys.exit()
+
 data = []
 for line in file.readlines():
     splitted_line = line.split(';')
