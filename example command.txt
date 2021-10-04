@@ -1,0 +1,1 @@
+python reader.py data.csv output.csv 1,2,Jan 0,0,Jan
